@@ -1,0 +1,33 @@
+#!/bin/bash -login
+
+### define resources needed:
+### walltime - how long you expect the job to run
+#PBS -l walltime=12:00:00
+ 
+### nodes:ppn - how many nodes & cores per node (ppn) that you require
+#PBS -l nodes=1:ppn=20
+
+### mem: amount of memory that the job will need
+#PBS -l mem=64gb
+
+#PBS -q main
+#PBS -M sdsmith@iastate.edu
+#PBS -m abe
+#PBS -A colej
+
+### you can give your job a name for easier identification
+#PBS -N blast
+
+# Make output and error files the same file
+#PBS -j oe
+
+### load module
+
+alias blastn='/mnt/research/germs/softwares/ncbi-blast-2.7.1+/bin/blastn'
+alias makeblastdb='/mnt/research/germs/softwares/ncbi-blast-2.7.1+/bin/makeblastdb'
+
+### call
+
+# makeblastdb -in database.fasta -dbtype nucl -out database_name
+
+blastn -db database_name -query seqs.fasta -out blast_out.blast -outfmt 6 -num_threads 20 -num_alignments 1
