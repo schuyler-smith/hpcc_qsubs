@@ -35,6 +35,6 @@ done
 
 
 echo "qsub -I -l nodes=1:ppn=20,mem=64gb,walltime=$time:00:00 -N myjob"
-qsub -I -l nodes=1:ppn=20,mem=64gb,walltime=$time:00:00 -N myjob -M sdsmith@iastate.edu -m abe -A colej
+qsub -I -l nodes=1:ppn=20,mem=64gb,walltime=$time:00:00 -N interactive -m abe -A colej
 
 
